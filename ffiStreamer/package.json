@@ -1,0 +1,21 @@
+{
+  "name": "ffi-stream-esdk",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "dev": "ts-node-dev src/Main.ts",
+    "build": "tsc && npx javascript-obfuscator ./prebuild --transform-object-keys true --output ./build && cp package.json ./build && mkdir -p ./build/assets/tmp/photos && npm install --production --prefix ./build"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "socket.io": "^4.7.5",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "javascript-obfuscator": "^4.1.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.3"
+  }
+}

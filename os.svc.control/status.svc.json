@@ -1,0 +1,14 @@
+{
+  "services": {
+    "svc_storage": {
+      "name": "Storage",
+      "state": "UP",
+      "lastUpdate": "2024-06-04T12:10:00+02:00"
+    },
+    "svc_": {
+      "name": "Storage",
+      "state": "UP",
+      "lastUpdate": "2024-06-04T12:10:00+02:00"
+    }
+  }
+}

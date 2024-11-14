@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title><%- title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    swiper-container {
+      width: 240px;
+      height: 320px;
+    }
+
+    swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+      background-repeat: no-repeat; 
+      background-position: center;
+      background-size: cover;
+      background-color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="bg"></div>
+      <div class="smileengine"></div>
+      <div id="header" class="header"><%- title %></div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="gallery">
+      <h1>
+        <% if (count === 1) { %>
+          1 photo dans la galerie
+        <% } else { %>
+          <%= count %> photos dans la galerie
+        <% } %>
+      </h1>
+     
+    <swiper-container class="mySwiper" effect="cards" grab-cursor="true">
+      <% userPhotos.forEach(photo => { %>
+        <swiper-slide data-path="<%= photo %>" style="background-image: url('<%= photo %>')"></swiper-slide>
+      <% }) %>
+    </swiper-container>
+    <button id="dwnload"  class="btn-primary">Télécharger</button>
+    </div>
+   
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+  <script>
+
+    function downloadImage(url, filename) {
+      return new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open('GET', url, true);
+          xhr.responseType = 'arraybuffer';
+          xhr.onload = function() {
+              if (this.status === 200) {
+                  const blob = new Blob([this.response], { type: 'image/jpeg' });
+                  const link = document.createElement('a');
+                  link.href = window.URL.createObjectURL(blob);
+                  link.download = filename;
+                  link.click();
+                  resolve();
+              } else {
+                  reject(new Error('Failed to download image'));
+              }
+          };
+          xhr.onerror = function() {
+              reject(new Error('Failed to download image'));
+          };
+          xhr.send();
+      });
+  }
+  
+  async function downloadFiles() {
+      const images = document.querySelectorAll('.swiper-slide');
+      const baseUrl = window.location.origin;
+  
+      const downloadPromises = [];
+  
+      images.forEach(image => {
+          const path = image.dataset.path;
+          if (path) {
+              const imageUrl = baseUrl + path;
+              const filename = path.substring(path.lastIndexOf('/') + 1); // Extracting filename from URL
+              downloadPromises.push(downloadImage(imageUrl, filename));
+          }
+      });
+  
+      try {
+          await Promise.all(downloadPromises);
+          console.log('All images downloaded successfully');
+      } catch (error) {
+          console.error('Error downloading images:', error);
+      }
+  }
+  
+  const btn = document.getElementById('dwnload');
+  
+  btn.addEventListener('click', () => {
+      downloadFiles();
+  });
+  </script>
+</body>
+</html>

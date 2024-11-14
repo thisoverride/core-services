@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Client</title>
+</head>
+<body>
+
+    <style>
+        body{
+            background-color: rgb(165, 165, 165);
+        }
+        .container{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            
+        }
+        .element{
+            width: 800px;
+            display: flex;
+            flex-direction:  column-reverse;
+            gap: 5px;
+            border: 2px solid #fff;
+            padding: 12px;
+        }
+
+        .photomanager{
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .command {
+            display: flex;
+            gap: 30px;
+        }
+        .message{
+            height: 10px;
+        }
+
+        .img-wrp{
+            display: flex;
+            width: 100%;
+        }
+
+    </style>
+
+    <div class="container">
+        <div class="test"></div>
+        <div class="element">
+            <div id="messages"></div>
+            <div class="photomanager">
+                <div>Photo manager zone</div>
+                <div class="command">
+                    <input type="button" id="get-last-photo" value="show photo">
+                    <input type="button" id="release-all" value="delete all">
+                </div>
+                <div  class="spec">
+                    <p>Delete specific photo (separe name with commas)</p>
+                    <div class="trigger">
+                        <input type="button" id="delete" value="delete specific">
+                        <input id="to_delete" type="text">
+                    </div>
+                </div>
+            </div>
+            <input type="button" id="close-stream"value="close stream">
+            <input type="button" id="shooting" value="shooting">
+            <input type="button" id="stream" value="stream">
+            <input type="button" id="build-code" value="build qrCode">
+            <div class="message"></div>
+
+            <div class="img-wrp">
+                <img style="height: 400px; width: 400px;" id="live" src="" alt="">
+                <img style="height: 400px; width: 400px;" id="qr" src="" alt="">
+            </div>
+         
+        </div>
+    </div>
+
+  <script src="socket.io.js"></script>
+  <script src="cli-front.js"></script>
+</body>
+</body>
+</html>

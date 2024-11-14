@@ -1,0 +1,74 @@
+    // public buildQRCode(sessionID: string): Promise<{ linkQRCode: string, wifiQRCode: string }> {
+    //     return new Promise((resolve, reject) => {
+    //         const wifiConfig: string = `WIFI:T:WPA;S:Bbox-7E571C87-5GHz;P:5YXbMSfJnxwW7ZLLmX;;`;
+    //         const url: string = `http://192.168.1.138:8002/smile-storage/store/${sessionID}`;
+    //         const linkQRCodePromise = this.generateQRCode(url);
+    //         const wifiQRCodePromise = this.generateQRCode(wifiConfig);
+            
+    //         Promise.all([linkQRCodePromise, wifiQRCodePromise])
+    //             .then(([linkQRCode, wifiQRCode]) => {
+    //                 resolve({ linkQRCode, wifiQRCode });
+    //             })
+    //             .catch(reject);
+    //     });
+    // }
+
+    // private generateQRCode(data: string): Promise<string> {
+    //     return new Promise((resolve, reject) => {
+    //         QRCode.toDataURL(data, { errorCorrectionLevel: 'H' }, (err, url) => {
+    //             if (err) {
+    //                 reject(err); 
+    //             } else {
+    //                 resolve(url);
+    //             }
+    //         });
+    //     });
+    // }
+
+        // private async base64ToPortrait(imageArray: string[]): Promise<void> {
+    //     try {
+    //       const parentDirectory: string = path.join(CameraService.SESSION_FILE_PATH,'tmp');
+    //       if (!fs.existsSync(parentDirectory)) {
+    //         await fs.promises.mkdir(parentDirectory, { recursive: true });
+    //       }
+    
+    //       imageArray.reverse();
+    //       for(const [index,image] of imageArray.entries()){
+    //         const imageBuffer = Buffer.from(image.split(',')[1], 'base64');
+    //         const resizedImageBuffer = await sharp(imageBuffer)
+    //             .resize({ width: 720 ,height: 1280})
+    //             .toBuffer();
+    //             await fs.promises.writeFile(`${parentDirectory}/image-${index}.jpg`, resizedImageBuffer);
+    //           }
+    
+    //       const imagePattern = path.join(parentDirectory,'image-%d.jpg');
+    //       let outputFilePath: string = path.join(CameraService.SESSION_FILE_PATH,'vid');
+    //       if (!fs.existsSync(outputFilePath)) {
+    //         await fs.promises.mkdir(outputFilePath, { recursive: true });
+    //         outputFilePath += `/vid_${Date.now()}_.mov`;
+    //       }
+    //       const filterComplex: string ='[0]reverse[r];[0][r][0]concat=n=3,setpts=0.5*PTS';
+          
+    //       ffmpeg().input(imagePattern)
+    //       .inputOptions(['-framerate 14'])
+    //       .complexFilter(filterComplex)
+    //       .output(outputFilePath)
+    //       .videoCodec('libx264') 
+    //       .outputOptions('-crf 20')
+    //       .outputOptions('-pix_fmt yuv420p')
+    //       .on('end', () => {
+    //         console.log('imageProcessing end')
+    //         fsExtra.removeSync(parentDirectory);
+    //         this.eventEmitter.emit('imageProcessing',{status:'OK'})
+    //       })
+    //       .on('error', (err: any) => {
+    //         console.log(`imageProcessing ${err}`);
+    //         this.eventEmitter.emit('imageProcessing',{status:'FAIL'})
+    //       })
+    //       .run();
+    
+    //     } catch (error) {
+    //         console.error("An error occurred while resizing the image:", error);
+    //         throw error;
+    //     }
+    // }

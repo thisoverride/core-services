@@ -1,0 +1,36 @@
+{
+  "name": "os.svc.photo.manager",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "dev": "ts-node-dev src/main.ts",
+    "prod": "node build/main.js",
+    "build": "yarn clean && yarn compile && yarn obfuscate && yarn copy-package && yarn install-prod-deps",
+    "clean": "rm -rf ./build ./prebuild",
+    "compile": "tsc",
+    "obfuscate": "npx javascript-obfuscator ./prebuild --transform-object-keys true --output ./build",
+    "copy-package": "cp package.json ./build",
+    "install-prod-deps": "yarn install --production --cwd ./build",
+    "test": "jest"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.14.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "fs-extra": "^11.2.0",
+    "helmet": "^7.1.0",
+    "javascript-obfuscator": "^4.1.0",
+    "joi": "^17.13.1",
+    "morgan": "^1.10.0",
+    "sharp": "^0.33.4"
+  }
+}
