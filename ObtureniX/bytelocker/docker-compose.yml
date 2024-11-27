@@ -1,0 +1,28 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: system-x-ctl
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    privileged: true
+    volumes:
+      - .:/usr/src/systemctl
+      - /usr/src/systemctl/node_modules
+      - /sys:/sys
+      - /dev:/dev
+      - /run/dbus:/run/dbus
+      - /run/systemd:/run/systemd
+      - /var/run/dbus:/var/run/dbus
+    environment:
+      - NODE_ENV=development
+      - TZ=Europe/Paris
+    cap_add:
+      - SYS_ADMIN
+      - NET_ADMIN
+      - SYS_BOOT

@@ -1,0 +1,6 @@
+FROM node:22
+WORKDIR /usr/src/systemctl
+COPY package*.json ./
+RUN yarn install
+COPY . .
+CMD ["yarn", "dev"]

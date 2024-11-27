@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "es2020",                                   /* Modern target for better runtime features. */
+    "lib": ["ES2020", "DOM"],                             /* Include runtime library declarations. */
+    "experimentalDecorators": true,                       /* Enable experimental support for legacy decorators. */
+    "emitDecoratorMetadata": true,                        /* Emit type metadata for decorators. */
+
+    /* Modules */
+    "module": "commonjs",                                 /* CommonJS for compatibility with Node.js. */
+    "rootDir": "./src",                                   /* Specify the root folder for source files. */
+    "outDir": "./build",                                  /* Emit compiled files to a specific directory. */
+    "declaration": true,                                  /* Generate .d.ts files for type declarations. */
+    "declarationMap": true,                               /* Enable sourcemaps for .d.ts files. */
+    "resolveJsonModule": true,                            /* Enable importing JSON files. */
+    "esModuleInterop": true,                              /* Emit extra JavaScript to support CommonJS modules. */
+    "allowSyntheticDefaultImports": true,                 /* Allow default imports from modules without a default export. */
+
+    /* Type Checking */
+    "strict": true,                                       /* Enable strict type checking. */
+    "noImplicitAny": true,                                /* Disallow variables with an implied 'any' type. */
+    "strictNullChecks": true,                             /* Make null and undefined distinct types. */
+    "noUnusedLocals": true,                               /* Raise errors for unused local variables. */
+    "noUnusedParameters": true,                           /* Raise errors for unused parameters. */
+    "noImplicitReturns": true,                            /* Raise errors for code paths that lack an explicit return. */
+    "forceConsistentCasingInFileNames": true,             /* Ensure file name imports are case-sensitive. */
+    "noImplicitOverride": true,                           /* Require 'override' modifier for overridden methods. */
+    "removeComments": true,
+
+    /* JavaScript Support */
+    "allowJs": false,                                     /* Disallow JavaScript files in the project. */
+
+    /* Emit */
+    "sourceMap": true,                                    /* Generate source map files for debugging. */
+    "inlineSources": true,                                /* Include source code in emitted source maps. */
+
+    /* Interop Constraints */
+    "skipLibCheck": true,                                 /* Skip type checking .d.ts files for faster builds. */
+    
+    /* Completeness */
+    "incremental": true,                                  /* Enable incremental compilation for faster builds. */
+    "composite": true                                     /* Enable support for project references. */
+  },
+  "include": ["src/**/*"],                                /* Include all files in the src folder. */
+  "exclude": ["node_modules", "build", "dist", "tests", "src/main.ts"]   /* Exclude unnecessary folders from compilation. */
+}

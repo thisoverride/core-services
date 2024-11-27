@@ -1,0 +1,1 @@
+{"version":3,"file":"SystemError.d.ts","sourceRoot":"","sources":["../../../../src/lib/utils/error/SystemError.ts"],"names":[],"mappings":"AAAA,qBAAa,WAAY,SAAQ,KAAK;aAGlB,IAAI,EAAE,MAAM;gBAD5B,OAAO,EAAE,MAAM,EACC,IAAI,GAAE,MAAuB;CAKhD"}
