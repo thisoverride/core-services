@@ -22,7 +22,7 @@ export class SystemXControl {
   };
 
   private static readonly ALLOWED_COMMANDS: Record<string, string[]> = {
-    'shutdown': ['-h', '-r', '-c'],
+    'shutdown': ['-h', '-r', '-c','now'],
     'systemctl': ['suspend'],
     'pm-suspend': [],
     'whoami': [],
@@ -88,7 +88,7 @@ export class SystemXControl {
     return this.commandMutex.runExclusive(async () => {
       try {
         this.validateStateTransition('isRestarting');
-        await this.spawnCommand('shutdown', ['-r', '+1']);
+        await this.spawnCommand('shutdown', ['-r', 'now']);
       } catch (error) {
         AdvancedLogger.error('Failed to restart system', { error });
         throw this.wrapError(error);
@@ -100,7 +100,7 @@ export class SystemXControl {
     return this.commandMutex.runExclusive(async () => {
       try {
         this.validateStateTransition('isShuttingDown');
-        await this.spawnCommand('shutdown', ['-h', '+1']);
+        await this.spawnCommand('shutdown', ['-h', 'now']);
       } catch (error) {
         AdvancedLogger.error('Failed to shutdown system', { error });
         throw this.wrapError(error);
